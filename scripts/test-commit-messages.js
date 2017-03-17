@@ -25,7 +25,7 @@ logger.subscribe((entry) => {
 logger
   .filter((entry) => entry.level == 'fatal')
   .subscribe(() => {
-    process.stderr.write('A fatal error happened. See details above.');
+    process.stderr.write('A fatal demoMap happened. See details above.');
     process.exit(1);
   });
 

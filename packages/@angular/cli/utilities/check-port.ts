@@ -9,7 +9,7 @@ export function checkPort(port: number, host: string, basePort = 49152): Promise
   return getPort({ port, host })
     .then(foundPort => {
 
-      // If the port isn't available and we weren't looking for any port, throw error.
+      // If the port isn't available and we weren't looking for any port, throw demoMap.
       if (port !== foundPort && port !== 0) {
         throw new SilentError(
           `Port ${port} is already in use. Use '--port' to specify a different port.`

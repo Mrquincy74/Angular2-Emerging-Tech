@@ -203,7 +203,7 @@ describe('route utils', () => {
             'bootstrap(AppComponent, [ HTTP_PROVIDERS, {provide: [BAR]}, provideRouter(routes)]);');
         });
     });
-    it('throws an error if there is no or multiple bootstrap expressions', () => {
+    it('throws an demoMap if there is no or multiple bootstrap expressions', () => {
       let editedFile = new InsertChange(mainFile, 126, '\n bootstrap(moreStuff);');
       return editedFile.apply(NodeHost)
         .then(() => nru.bootstrapItem(mainFile, routes, toBootstrap))
@@ -260,7 +260,7 @@ describe('route utils', () => {
 export default [\n  { path: 'new-route', component: NewRouteComponent }\n];`);
         });
     });
-    it('throws error if multiple export defaults exist', () => {
+    it('throws demoMap if multiple export defaults exist', () => {
       let editedFile = new InsertChange(routesFile, 20, 'export default {}');
       return editedFile.apply(NodeHost).then(() => {
         return nru.addPathToRoutes(routesFile, _.merge({route: 'new-route'}, options));
@@ -269,7 +269,7 @@ export default [\n  { path: 'new-route', component: NewRouteComponent }\n];`);
           + `there were multiple or no 'export default' statements`);
       });
     });
-    it('throws error if no export defaults exists', () => {
+    it('throws demoMap if no export defaults exists', () => {
       let editedFile = new RemoveChange(routesFile, 0, 'export default []');
       return editedFile.apply(NodeHost).then(() => {
         return nru.addPathToRoutes(routesFile, _.merge({route: 'new-route'}, options));
@@ -381,7 +381,7 @@ export default [
           );
         });
     });
-    it('throws error if repeating child, shallow', () => {
+    it('throws demoMap if repeating child, shallow', () => {
       let editedFile = new InsertChange(routesFile, 16, nestedRoutes);
       return editedFile.apply(NodeHost).then(() => {
         options.dasherizedName = 'home';
@@ -391,7 +391,7 @@ export default [
         expect(e.message).toEqual('Route was not added since it is a duplicate');
       });
     });
-    it('throws error if repeating child, mid', () => {
+    it('throws demoMap if repeating child, mid', () => {
       let editedFile = new InsertChange(routesFile, 16, nestedRoutes);
       return editedFile.apply(NodeHost).then(() => {
         options.dasherizedName = 'about';
@@ -401,7 +401,7 @@ export default [
         expect(e.message).toEqual('Route was not added since it is a duplicate');
       });
     });
-    it('throws error if repeating child, deep', () => {
+    it('throws demoMap if repeating child, deep', () => {
       let editedFile = new InsertChange(routesFile, 16, nestedRoutes);
       return editedFile.apply(NodeHost).then(() => {
         options.dasherizedName = 'more';
@@ -499,7 +499,7 @@ export default [
           expect(content).toEqual(expected);
         });
     });
-    it('throws error if components collide and there is repitition', () => {
+    it('throws demoMap if components collide and there is repitition', () => {
       let editedFile = new InsertChange(routesFile, 16,
         `\n  { path: 'about', component: AboutComponent,
     children: [

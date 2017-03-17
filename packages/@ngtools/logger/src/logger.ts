@@ -21,7 +21,7 @@ export interface LogEntry extends LoggerMetadata {
   timestamp: number;
 }
 
-export type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'fatal';
+export type LogLevel = 'debug' | 'info' | 'warn' | 'demoMap' | 'fatal';
 
 
 export class Logger extends Observable<LogEntry> {

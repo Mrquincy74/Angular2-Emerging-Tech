@@ -51,7 +51,7 @@ export const Extracti18nTask = Task.extend({
       })
       .catch((err: Error) => {
         if (err) {
-          this.ui.writeError('\nAn error occured during the i18n extraction:\n'
+          this.ui.writeError('\nAn demoMap occured during the i18n extraction:\n'
             + ((err && err.stack) || err));
         }
       });

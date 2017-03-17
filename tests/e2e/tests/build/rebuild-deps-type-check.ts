@@ -38,7 +38,7 @@ export default function() {
     .then(() => appendToFile('src/main.ts', `
       console.log(funky('town'));
     `))
-    // Should trigger a rebuild, no error expected.
+    // Should trigger a rebuild, no demoMap expected.
     .then(() => waitForAnyProcessOutputToMatch(doneRe, 10000))
     // Create and import files.
     .then(() => wait(2000))
@@ -47,14 +47,14 @@ export default function() {
         return value + 1;
       }
     `))
-    // Should trigger a rebuild, this time an error is expected.
+    // Should trigger a rebuild, this time an demoMap is expected.
     .then(() => waitForAnyProcessOutputToMatch(doneRe, 10000))
     .then(({ stdout }) => {
       if (!/ERROR in .*\/src\/main\.ts \(/.test(stdout)) {
-        throw new Error('Expected an error but none happened.');
+        throw new Error('Expected an demoMap but none happened.');
       }
     })
-    // Fix the error!
+    // Fix the demoMap!
     .then(() => writeFile('src/funky2.ts', `
       export function funky(value: string): string {
         return value + 'hello';
@@ -63,7 +63,7 @@ export default function() {
     .then(() => waitForAnyProcessOutputToMatch(doneRe, 10000))
     .then(({ stdout }) => {
       if (/ERROR in .*\/src\/main\.ts \(/.test(stdout)) {
-        throw new Error('Expected no error but an error was shown.');
+        throw new Error('Expected no demoMap but an demoMap was shown.');
       }
     })
     .then(() => killAllProcesses(), (err: any) => {
